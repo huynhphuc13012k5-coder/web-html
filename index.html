@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blue Gaming Store - Premium</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #020617;
+            --bg-light: #0f172a;
+            --accent-blue: #3b82f6;
+            --accent-glow: rgba(59, 130, 246, 0.5);
+            --text-white: #f8fafc;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; }
+        
+        body { 
+            background: radial-gradient(circle at top right, var(--bg-light) 0%, var(--bg-dark) 100%);
+            color: var(--text-white); 
+            min-height: 100vh;
+            padding-bottom: 100px; /* Chừa chỗ cho banner chân trang */
+        }
+
+        .hidden { display: none !important; }
+        .container { max-width: 1000px; margin: 0 auto; padding: 20px; }
+
+        /* HEADER & SEARCH */
+        header {
+            padding: 50px 20px; text-align: center;
+            background: linear-gradient(to bottom, rgba(30, 64, 175, 0.3), transparent);
+        }
+        h1 { font-weight: 800; font-size: 2.5rem; text-shadow: 0 0 20px var(--accent-glow); margin-bottom: 30px; }
+        #search-input { 
+            width: 100%; max-width: 500px; padding: 15px 30px; border-radius: 50px;
+            border: 2px solid rgba(59, 130, 246, 0.3); background: rgba(255,255,255,0.05);
+            color: white; outline: none; transition: 0.3s;
+        }
+        #search-input:focus { border-color: var(--accent-blue); box-shadow: 0 0 20px var(--accent-glow); }
+
+        /* QUẢNG CÁO SLOT */
+        .ad-slot {
+            background: rgba(0,0,0,0.4); border: 1px dashed rgba(255,255,255,0.1);
+            color: #64748b; display: flex; align-items: center; justify-content: center;
+            margin: 20px auto; min-height: 90px; border-radius: 12px; font-size: 0.8rem;
+        }
+
+
+        /* QUẢNG CÁO TRÒN TRÔI NỔI (FLOATING CIRCLE AD) */
+        .floating-circle-ad {
+            position: fixed; bottom: 110px; right: 20px;
+            width: 70px; height: 70px; border-radius: 50%;
+            background: var(--accent-blue); border: 3px solid white;
+            box-shadow: 0 0 20px var(--accent-glow);
+            z-index: 1001; cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            text-align: center; font-size: 0.7rem; font-weight: bold;
+            animation: bounce 2s infinite; overflow: hidden;
+        }
+        @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
+
+        /* SCENE 1: GRID */
+        #games-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 25px; margin-top: 30px; }
+        .game-card { 
+            background: rgba(30, 41, 59, 0.5); border-radius: 15px; overflow: hidden;
+            transition: 0.4s; border: 1px solid rgba(255,255,255,0.05); cursor: pointer;
+        }
+        .game-card:hover { transform: translateY(-10px); border-color: var(--accent-blue); box-shadow: 0 15px 30px rgba(0,0,0,0.5); }
+        .game-card img { width: 100%; height: 160px; object-fit: cover; }
+        .game-card h3 { padding: 15px; text-align: center; font-size: 0.9rem; }
+
+        /* SCENE 2: DETAIL */
+        #detail-scene { animation: slideIn 0.4s ease-out; }
+        @keyframes slideIn { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
+        .btn-back { background: rgba(255,255,255,0.05); border: 1px solid var(--accent-blue); color: var(--accent-blue); padding: 10px 25px; border-radius: 30px; cursor: pointer; margin-bottom: 20px; font-weight: bold; }
+        .game-detail-img { width: 100%; border-radius: 20px; margin: 20px 0 10px 0; box-shadow: 0 10px 40px rgba(0,0,0,0.5); }
+        .game-detail-desc { line-height: 1.7; background: rgba(255,255,255,0.02); padding: 20px; border-radius: 15px; margin-bottom: 30px; white-space: pre-line; }
+
+        /* --- THÊM CSS CHO ẢNH CHI TIẾT --- */
+        .game-ss-container { 
+            display: grid; 
+            grid-template-columns: 1fr 1fr; 
+            gap: 15px; 
+            margin-bottom: 20px; 
+        }
+        .game-ss-img { 
+            width: 100%; 
+            border-radius: 15px; 
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3); 
+            object-fit: cover;
+            height: 300px; /* Độ cao cố định cho 2 ảnh nhỏ */
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        /* UNLOCK AREA */
+        .download-area { background: #020617; border: 1px solid #1e293b; padding: 40px; border-radius: 25px; text-align: center; }
+        .btn-unlock { background: #f59e0b; color: white; border: none; padding: 15px 40px; border-radius: 50px; font-weight: 800; cursor: pointer; transition: 0.3s; margin: 20px 0; }
+        .btn-unlock:hover { transform: scale(1.05); box-shadow: 0 0 20px rgba(245, 158, 11, 0.4); }
+        .btn-download-final { background: #16a34a; color: white; text-decoration: none; padding: 20px 50px; border-radius: 50px; font-weight: 800; font-size: 1.2rem; display: inline-block; transition: 0.3s; box-shadow: 0 0 20px rgba(22, 163, 74, 0.4); }
+    </style>
+</head>
+<body>
+
+    <div class="floating-circle-ad">
+        ADS<br>HOT
+    </div>
+
+    <div class="sticky-bottom-ad">
+        
+    </div>
+
+    <div id="main-scene">
+        <header>
+            <h1>BLUE GAME STORE</h1>
+            <input type="text" id="search-input" placeholder="Tìm game...">
+        </header>
+        <div class="container">
+            <div class="ad-slot">[BANNER ĐẦU TRANG]</div>
+            <div id="games-grid"></div>
+            <div class="ad-slot" style="margin-top: 50px;">[BANNER CUỐI TRANG CHỦ]</div>
+        </div>
+    </div>
+
+    <div id="detail-scene" class="hidden">
+        <div class="container">
+            <button class="btn-back" onclick="goBack()">← QUAY LẠI</button>
+            <h1 id="det-title" style="color:var(--accent-blue)">Tên Game</h1>
+            <div class="ad-slot">[ADS DƯỚI TÊN GAME]</div>
+            
+            <img id="det-img" src="" class="game-detail-img">
+            
+            <div class="game-ss-container">
+                <img id="det-ss1" src="" class="game-ss-img" alt="Screenshot 1">
+                <img id="det-ss2" src="" class="game-ss-img" alt="Screenshot 2">
+            </div>
+
+            <p id="det-desc" class="game-detail-desc"></p>
+
+            <div class="download-area">
+                <div class="ad-slot">[ADS TRÊN NÚT MỞ KHÓA]</div>
+                <div id="unlock-container">
+                    <button class="btn-unlock" onclick="startUnlock()">NHẤN ĐỂ MỞ KHÓA LINK TẢI</button>
+                    <p style="font-size: 0.8rem; color: #475569;">(Vui lòng chờ xác nhận quảng cáo...)</p>
+                </div>
+                <div id="download-container" class="hidden">
+                    <div class="ad-slot">[ADS TRÊN NÚT TẢI]</div>
+                    <a href="#" id="det-link" class="btn-download-final" target="_blank">TẢI GAME NGAY</a>
+                    <div class="ad-slot">[ADS DƯỚI NÚT TẢI]</div>
+                </div>
+            </div>
+            <div class="ad-slot" style="margin-top: 50px;">[BANNER DƯỚI CÙNG TRANG CHI TIẾT]</div>
+        </div>
+    </div>
+
+    <script src="games-data.js"></script>
+    <script>
+        const mainScene = document.getElementById('main-scene');
+        const detailScene = document.getElementById('detail-scene');
+        const gamesGrid = document.getElementById('games-grid');
+        const searchInput = document.getElementById('search-input');
+
+        function renderHome(list) {
+            gamesGrid.innerHTML = '';
+            list.forEach(game => {
+                const card = document.createElement('div');
+                card.className = 'game-card';
+                card.onclick = () => showDetail(game.id);
+                card.innerHTML = `<img src="${game.image}"><h3>${game.name}</h3>`;
+                gamesGrid.appendChild(card);
+            });
+        }
+
+        function showDetail(id) {
+            const game = gamesData.find(g => g.id === id);
+            if (!game) return;
+            document.getElementById('det-title').innerText = game.name;
+            document.getElementById('det-img').src = game.image;
+
+            // GÁN DỮ LIỆU CHO 2 ẢNH MỚI (Lấy từ ss1 và ss2 trong file games-data.js)
+            document.getElementById('det-ss1').src = game.ss1 || ""; 
+            document.getElementById('det-ss2').src = game.ss2 || "";
+
+            document.getElementById('det-desc').innerText = game.description;
+            document.getElementById('det-link').href = game.downloadLink;
+            
+            document.getElementById('unlock-container').classList.remove('hidden');
+            document.getElementById('download-container').classList.add('hidden');
+            mainScene.classList.add('hidden');
+            detailScene.classList.remove('hidden');
+            window.scrollTo(0, 0);
+        }
+
+        function goBack() {
+            detailScene.classList.add('hidden');
+            mainScene.classList.remove('hidden');
+        }
+
+        function startUnlock() {
+            const btn = document.querySelector('.btn-unlock');
+            let time = 10;
+            btn.disabled = true;
+            const timer = setInterval(() => {
+                btn.innerText = `ĐANG KIỂM TRA... ${time}s`;
+                time--;
+                if (time < 0) {
+                    clearInterval(timer);
+                    document.getElementById('unlock-container').classList.add('hidden');
+                    document.getElementById('download-container').classList.remove('hidden');
+                    document.getElementById('det-link').scrollIntoView({ behavior: 'smooth' });
+                }
+            }, 1000);
+        }
+
+        searchInput.addEventListener('input', (e) => {
+            const term = e.target.value.toLowerCase();
+            renderHome(gamesData.filter(g => g.name.toLowerCase().includes(term)));
+        });
+
+        if (typeof gamesData !== 'undefined') renderHome(gamesData);
+    </script>
+</body>
+</html>
