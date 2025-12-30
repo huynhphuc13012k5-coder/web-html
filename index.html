@@ -207,6 +207,7 @@
         function showDetail(id) {
             const game = gamesData.find(g => g.id === id);
             if (!game) return;
+			history.pushState({ scene: 'detail' }, '');
             document.getElementById('det-title').innerText = game.name;
             document.getElementById('det-img').src = game.image;
             document.getElementById('det-ss1').src = game.ss1 || ""; 
@@ -226,7 +227,11 @@
             mainScene.classList.remove('hidden');
             window.scrollTo(0, 0);
         }
-
+        window.onpopstate = function(event) {
+        detailScene.classList.add('hidden');
+        mainScene.classList.remove('hidden');
+        window.scrollTo(0, 0);
+    };
         // TÍCH HỢP SMARTLINK VÀO NÚT MỞ KHÓA
         function startUnlock() {
             // Mở Smartlink quảng cáo của bạn
