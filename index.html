@@ -20,67 +20,90 @@
             background: radial-gradient(circle at top right, var(--bg-light) 0%, var(--bg-dark) 100%);
             color: var(--text-white); 
             min-height: 100vh;
-            padding-bottom: 80px; /* Chừa khoảng trống cho nút nổi mobile */
+            padding-bottom: 100px;
         }
 
         .hidden { display: none !important; }
         .container { max-width: 1000px; margin: 0 auto; padding: 15px; }
 
-        /* HEADER MOBILE-FIRST */
+        /* HEADER & SEARCH */
         header {
-            padding: 30px 15px; text-align: center;
+            padding: 40px 15px; text-align: center;
             background: linear-gradient(to bottom, rgba(30, 64, 175, 0.3), transparent);
         }
-        h1 { font-weight: 800; font-size: 1.8rem; text-shadow: 0 0 15px var(--accent-glow); margin-bottom: 20px; }
-        
+        h1 { font-weight: 800; font-size: 2rem; text-shadow: 0 0 20px var(--accent-glow); margin-bottom: 25px; }
         #search-input { 
             width: 100%; max-width: 500px; padding: 12px 25px; border-radius: 50px;
             border: 2px solid rgba(59, 130, 246, 0.3); background: rgba(255,255,255,0.05);
             color: white; outline: none; transition: 0.3s; font-size: 0.9rem;
         }
+        #search-input:focus { border-color: var(--accent-blue); box-shadow: 0 0 20px var(--accent-glow); }
 
-        /* DÒNG CHỮ DUY TRÌ WEB */
-        .maintain-note {
-           text-align: center; color: #64748b; font-size: 0.65rem;
-           font-weight: 600; margin: 15px 0;
-           letter-spacing: 0.5px; text-transform: uppercase;
+        /* QUẢNG CÁO SLOT (Giữ khung để tạo khoảng cách) */
+        .ad-slot {
+            margin: 20px auto; min-height: 20px; border-radius: 12px;
+            overflow: hidden; display: flex; justify-content: center; align-items: center;
+            max-width: 100%;
+        }
+		.maintain-note {
+           text-align: center;
+           color: #64748b;
+           font-size: 0.7rem;
+           font-weight: 600;
+           padding: 10px 0;
+           margin-top: 5px;
+           letter-spacing: 0.5px;
+           text-transform: uppercase;
+           width: 100%;
         }
 
-        /* NÚT NỔI MOBILE (KIẾM TIỀN CHÍNH) */
+        /* NÚT QUẢNG CÁO TRÒN (Chỉ giữ giao diện) */
         .floating-circle-ad {
-            position: fixed; bottom: 30px; right: 20px;
-            width: 60px; height: 60px; border-radius: 50%;
+            position: fixed; bottom: 100px; right: 15px;
+            width: 55px; height: 55px; border-radius: 50%;
             background: var(--accent-blue); border: 2px solid white;
-            box-shadow: 0 0 20px var(--accent-glow);
+            box-shadow: 0 0 15px var(--accent-glow);
             z-index: 9999; cursor: pointer;
             display: flex; align-items: center; justify-content: center;
-            animation: bounce 2s infinite; font-size: 0.65rem; font-weight: 800; text-align: center;
+            animation: bounce 2s infinite;
+            font-size: 0.6rem; font-weight: 800; text-align: center;
         }
         @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
 
-        /* GRID GAME TỐI ƯU 2 CỘT CHO ĐIỆN THOẠI */
-        #games-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 10px; }
+        /* GRID GAME */
+        #games-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 20px; }
         @media (min-width: 768px) { #games-grid { grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 20px; } }
 
-        .game-card { background: rgba(30, 41, 59, 0.5); border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.05); }
-        .game-card img { width: 100%; height: 110px; object-fit: cover; }
+        .game-card { 
+            background: rgba(30, 41, 59, 0.5); border-radius: 12px; overflow: hidden;
+            transition: 0.3s; border: 1px solid rgba(255,255,255,0.05); cursor: pointer;
+        }
+        .game-card:hover { border-color: var(--accent-blue); transform: translateY(-3px); }
+        .game-card img { width: 100%; height: 120px; object-fit: cover; }
         @media (min-width: 768px) { .game-card img { height: 160px; } }
         .game-card h3 { padding: 10px; text-align: center; font-size: 0.75rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
-        /* CHI TIẾT GAME MOBILE */
+        /* CHI TIẾT GAME */
+        #detail-scene { animation: slideIn 0.3s ease-out; }
+        @keyframes slideIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
         .btn-back { background: rgba(255,255,255,0.05); border: 1px solid var(--accent-blue); color: var(--accent-blue); padding: 8px 18px; border-radius: 30px; cursor: pointer; margin-bottom: 15px; font-weight: bold; font-size: 0.8rem; }
-        .game-detail-img { width: 100%; border-radius: 12px; margin: 5px 0 15px 0; box-shadow: 0 5px 20px rgba(0,0,0,0.4); }
-        .game-detail-desc { line-height: 1.5; background: rgba(255,255,255,0.02); padding: 15px; border-radius: 12px; font-size: 0.85rem; text-align: justify; }
+        
+        .game-detail-img { width: 100%; border-radius: 12px; margin: 10px 0; box-shadow: 0 5px 25px rgba(0,0,0,0.5); }
+        .game-detail-desc { line-height: 1.5; background: rgba(255,255,255,0.02); padding: 15px; border-radius: 12px; margin-bottom: 20px; font-size: 0.85rem; text-align: justify; }
 
-        /* 2 ẢNH SCREENSHOT DÀI RA (NHƯ BẠN ĐÃ SỬA) */
-        .game-ss-container { display: grid; grid-template-columns: 1fr; gap: 10px; margin: 15px 0; }
+        .game-ss-container { display: grid; grid-template-columns: 1fr; gap: 10px; margin-bottom: 20px; }
         @media (min-width: 600px) { .game-ss-container { grid-template-columns: 1fr 1fr; } }
-        .game-ss-img { width: 100%; border-radius: 10px; object-fit: cover; height: 280px; border: 1px solid rgba(255,255,255,0.1); }
+        .game-ss-img { width: 100%; border-radius: 10px; object-fit: cover; height: auto; max-height: 300px; border: 1px solid rgba(255,255,255,0.1); }
 
-        /* KHU VỰC TẢI GAME TỐI ƯU NÚT BẤM */
-        .download-area { background: #020617; border: 1px solid #1e293b; padding: 25px 15px; border-radius: 20px; text-align: center; margin-top: 15px; }
-        .btn-unlock { background: #f59e0b; color: white; border: none; padding: 15px 20px; border-radius: 50px; font-weight: 800; width: 100%; max-width: 320px; font-size: 0.9rem; cursor: pointer; box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3); }
-        .btn-download-final { background: #16a34a; color: white; text-decoration: none; padding: 16px 30px; border-radius: 50px; font-weight: 800; display: inline-block; width: 100%; max-width: 320px; font-size: 1rem; box-shadow: 0 4px 15px rgba(22, 163, 74, 0.3); }
+        /* DOWNLOAD AREA */
+        .download-area { background: #020617; border: 1px solid #1e293b; padding: 25px 15px; border-radius: 20px; text-align: center; }
+        .btn-unlock { background: #f59e0b; color: white; border: none; padding: 14px 20px; border-radius: 50px; font-weight: 800; cursor: pointer; transition: 0.3s; margin: 15px 0; width: 100%; max-width: 320px; font-size: 0.9rem; }
+        .btn-download-final { background: #16a34a; color: white; text-decoration: none; padding: 15px 30px; border-radius: 50px; font-weight: 800; font-size: 1rem; display: inline-block; width: 100%; max-width: 320px; box-shadow: 0 0 15px rgba(22, 163, 74, 0.3); }
+
+        @media (max-width: 600px) {
+            h1 { font-size: 1.5rem; }
+            .container { padding: 10px; }
+        }
     </style>
 </head>
 <body>
@@ -95,18 +118,19 @@
             <input type="text" id="search-input" placeholder="Tìm game...">
         </header>
         <div class="container">
-            <div id="games-grid"></div>
-            <p class="maintain-note">Quảng cáo để duy trì web</p>
-            <p class="maintain-note" style="margin-top: -10px;">Chúc mọi người chơi game vui vẻ</p>
+            <div class="ad-slot"></div> <div id="games-grid"></div>
+
+            <div class="ad-slot" style="margin-top: 30px;"></div> <p class="maintain-note">Quảng cáo để duy trì web</p>
+			<p class="maintain-note">Chúc mọi người chơi game vui vẻ</p>
         </div>
     </div>
 
     <div id="detail-scene" class="hidden">
         <div class="container">
             <button class="btn-back" onclick="goBack()">← QUAY LẠI</button>
-            <h1 id="det-title" style="color:var(--accent-blue); font-size: 1.4rem; margin-bottom: 10px;">Tên Game</h1>
+            <h1 id="det-title" style="color:var(--accent-blue); font-size: 1.3rem; margin-bottom: 15px;">Tên Game</h1>
             
-            <img id="det-img" src="" class="game-detail-img">
+            <div class="ad-slot"></div> <img id="det-img" src="" class="game-detail-img">
             
             <div class="game-ss-container">
                 <img id="det-ss1" src="" class="game-ss-img" alt="Screenshot 1">
@@ -116,17 +140,16 @@
             <p id="det-desc" class="game-detail-desc"></p>
 
             <div class="download-area">
-                <div id="unlock-container">
+                <div class="ad-slot"></div> <div id="unlock-container">
                     <button class="btn-unlock" onclick="startUnlock()">NHẤN ĐỂ MỞ KHÓA LINK TẢI</button>
+                    <p style="font-size: 0.7rem; color: #64748b;">(Quảng cáo sẽ mở ra để xác nhận mở khóa)</p>
                 </div>
-                
+
                 <div id="download-container" class="hidden">
-                    <a href="#" id="det-link" class="btn-download-final" target="_blank">TẢI GAME NGAY</a>
-                </div>
+                    <div class="ad-slot"></div> <a href="#" id="det-link" class="btn-download-final" target="_blank">TẢI GAME NGAY</a>
+                    <div class="ad-slot"></div> </div>
             </div>
-            
-            <p class="maintain-note">Quảng cáo để duy trì web</p>
-        </div>
+            <div class="ad-slot" style="margin-top: 30px;"></div> </div>
     </div>
 
     <script src="games-data.js"></script>
@@ -150,10 +173,7 @@
         function showDetail(id) {
             const game = gamesData.find(g => g.id === id);
             if (!game) return;
-            
-            // TỐI ƯU MOBILE: Giữ trạng thái để nút Back điện thoại không thoát web
-            history.pushState({ scene: 'detail' }, '');
-            
+			history.pushState({ scene: 'detail' }, '');
             document.getElementById('det-title').innerText = game.name;
             document.getElementById('det-img').src = game.image;
             document.getElementById('det-ss1').src = game.ss1 || ""; 
@@ -169,20 +189,18 @@
         }
 
         function goBack() {
-            if (!detailScene.classList.contains('hidden')) {
-                history.back();
-            }
-        }
-
-        // XỬ LÝ VUỐT BACK TRÊN ĐIỆN THOẠI
-        window.onpopstate = function(event) {
             detailScene.classList.add('hidden');
             mainScene.classList.remove('hidden');
             window.scrollTo(0, 0);
-        };
-        
+        }
+        window.onpopstate = function(event) {
+        detailScene.classList.add('hidden');
+        mainScene.classList.remove('hidden');
+        window.scrollTo(0, 0);
+    };
+        // TÍCH HỢP SMARTLINK VÀO NÚT MỞ KHÓA
         function startUnlock() {
-            // MỞ SMARTLINK KHI NHẤN NÚT
+            // Mở Smartlink quảng cáo của bạn
             window.open('https://www.effectivegatecpm.com/sq5fzn68?key=599266e677654f9a125ceb4f0fe9c0ad', '_blank');
 
             const btn = document.querySelector('.btn-unlock');
