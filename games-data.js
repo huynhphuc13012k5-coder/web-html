@@ -117,7 +117,7 @@ const gamesData = [
 		Bản đồ Blue Hole thay đổi mỗi lần bạn lặn (roguelike), tạo cảm giác luôn mới mẻ.
         Ban đêm (Quản lý): Sử dụng số cá đánh bắt được để kinh doanh tại nhà hàng Bancho Sushi. 
 		Bạn sẽ lên thực đơn, phục vụ thực khách và dùng lợi nhuận để nâng cấp trang bị lặn (bình oxy, súng, đồ lặn).
-		Hãy tải về ngay để cungf trải nghiệm con game siêu phẩm này nào.
+		Hãy tải về ngay để cùng trải nghiệm con game siêu phẩm này nào.
 		📦 Dung Lượng(Size) ~3,15GB`,
         downloadLink: "https://drive.usercontent.google.com/download?id=1nx4_N3Fd4_VbdIBnwMDb0vYKUDmk8Swk&export=download&authuser=0" 
     },
