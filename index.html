@@ -26,38 +26,26 @@
         .hidden { display: none !important; }
         .container { max-width: 1000px; margin: 0 auto; padding: 15px; }
 
-        /* HEADER & SEARCH */
         header {
             padding: 40px 15px; text-align: center;
             background: linear-gradient(to bottom, rgba(30, 64, 175, 0.3), transparent);
         }
         h1 { font-weight: 800; font-size: 2rem; text-shadow: 0 0 20px var(--accent-glow); margin-bottom: 25px; }
+        
         #search-input { 
             width: 100%; max-width: 500px; padding: 12px 25px; border-radius: 50px;
             border: 2px solid rgba(59, 130, 246, 0.3); background: rgba(255,255,255,0.05);
             color: white; outline: none; transition: 0.3s; font-size: 0.9rem;
         }
-        #search-input:focus { border-color: var(--accent-blue); box-shadow: 0 0 20px var(--accent-glow); }
 
-        /* QUẢNG CÁO SLOT (Giữ khung để tạo khoảng cách) */
-        .ad-slot {
-            margin: 20px auto; min-height: 20px; border-radius: 12px;
-            overflow: hidden; display: flex; justify-content: center; align-items: center;
-            max-width: 100%;
-        }
-		.maintain-note {
-           text-align: center;
-           color: #64748b;
-           font-size: 0.7rem;
-           font-weight: 600;
-           padding: 10px 0;
-           margin-top: 5px;
-           letter-spacing: 0.5px;
-           text-transform: uppercase;
-           width: 100%;
+        .ad-slot { margin: 20px auto; min-height: 20px; border-radius: 12px; }
+
+        .maintain-note {
+           text-align: center; color: #64748b; font-size: 0.65rem;
+           font-weight: 600; margin-top: 10px; margin-bottom: 20px;
+           letter-spacing: 0.5px; text-transform: uppercase;
         }
 
-        /* NÚT QUẢNG CÁO TRÒN (Chỉ giữ giao diện) */
         .floating-circle-ad {
             position: fixed; bottom: 100px; right: 15px;
             width: 55px; height: 55px; border-radius: 50%;
@@ -65,45 +53,27 @@
             box-shadow: 0 0 15px var(--accent-glow);
             z-index: 9999; cursor: pointer;
             display: flex; align-items: center; justify-content: center;
-            animation: bounce 2s infinite;
-            font-size: 0.6rem; font-weight: 800; text-align: center;
+            animation: bounce 2s infinite; font-size: 0.6rem; font-weight: 800;
         }
         @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
 
-        /* GRID GAME */
-        #games-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 20px; }
-        @media (min-width: 768px) { #games-grid { grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 20px; } }
+        #games-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 15px; }
+        @media (min-width: 768px) { #games-grid { grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); } }
 
-        .game-card { 
-            background: rgba(30, 41, 59, 0.5); border-radius: 12px; overflow: hidden;
-            transition: 0.3s; border: 1px solid rgba(255,255,255,0.05); cursor: pointer;
-        }
-        .game-card:hover { border-color: var(--accent-blue); transform: translateY(-3px); }
+        .game-card { background: rgba(30, 41, 59, 0.5); border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.05); }
         .game-card img { width: 100%; height: 120px; object-fit: cover; }
-        @media (min-width: 768px) { .game-card img { height: 160px; } }
-        .game-card h3 { padding: 10px; text-align: center; font-size: 0.75rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .game-card h3 { padding: 10px; text-align: center; font-size: 0.75rem; }
 
-        /* CHI TIẾT GAME */
-        #detail-scene { animation: slideIn 0.3s ease-out; }
-        @keyframes slideIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-        .btn-back { background: rgba(255,255,255,0.05); border: 1px solid var(--accent-blue); color: var(--accent-blue); padding: 8px 18px; border-radius: 30px; cursor: pointer; margin-bottom: 15px; font-weight: bold; font-size: 0.8rem; }
+        .btn-back { background: rgba(255,255,255,0.05); border: 1px solid var(--accent-blue); color: var(--accent-blue); padding: 8px 18px; border-radius: 30px; cursor: pointer; margin-bottom: 15px; font-weight: bold; }
+        .game-detail-img { width: 100%; border-radius: 12px; margin: 15px 0; }
+        .game-detail-desc { line-height: 1.5; background: rgba(255,255,255,0.02); padding: 15px; border-radius: 12px; font-size: 0.85rem; margin-top: 15px; }
         
-        .game-detail-img { width: 100%; border-radius: 12px; margin: 10px 0; box-shadow: 0 5px 25px rgba(0,0,0,0.5); }
-        .game-detail-desc { line-height: 1.5; background: rgba(255,255,255,0.02); padding: 15px; border-radius: 12px; margin-bottom: 20px; font-size: 0.85rem; text-align: justify; }
+        /* Screenshot cao 300px theo ý bạn */
+        .game-ss-img { width: 100%; border-radius: 10px; object-fit: cover; height: auto; max-height: 300px; border: 1px solid rgba(255,255,255,0.1); margin-top: 10px; }
 
-        .game-ss-container { display: grid; grid-template-columns: 1fr; gap: 10px; margin-bottom: 20px; }
-        @media (min-width: 600px) { .game-ss-container { grid-template-columns: 1fr 1fr; } }
-        .game-ss-img { width: 100%; border-radius: 10px; object-fit: cover; height: auto; max-height: 300px; border: 1px solid rgba(255,255,255,0.1); }
-
-        /* DOWNLOAD AREA */
-        .download-area { background: #020617; border: 1px solid #1e293b; padding: 25px 15px; border-radius: 20px; text-align: center; }
-        .btn-unlock { background: #f59e0b; color: white; border: none; padding: 14px 20px; border-radius: 50px; font-weight: 800; cursor: pointer; transition: 0.3s; margin: 15px 0; width: 100%; max-width: 320px; font-size: 0.9rem; }
-        .btn-download-final { background: #16a34a; color: white; text-decoration: none; padding: 15px 30px; border-radius: 50px; font-weight: 800; font-size: 1rem; display: inline-block; width: 100%; max-width: 320px; box-shadow: 0 0 15px rgba(22, 163, 74, 0.3); }
-
-        @media (max-width: 600px) {
-            h1 { font-size: 1.5rem; }
-            .container { padding: 10px; }
-        }
+        .download-area { background: #020617; border: 1px solid #1e293b; padding: 25px 15px; border-radius: 20px; text-align: center; margin-top: 20px; }
+        .btn-unlock { background: #f59e0b; color: white; border: none; padding: 14px 20px; border-radius: 50px; font-weight: 800; width: 100%; max-width: 320px; }
+        .btn-download-final { background: #16a34a; color: white; text-decoration: none; padding: 15px 30px; border-radius: 50px; font-weight: 800; display: inline-block; width: 100%; max-width: 320px; }
     </style>
 </head>
 <body>
@@ -118,9 +88,10 @@
             <input type="text" id="search-input" placeholder="Tìm game...">
         </header>
         <div class="container">
-            <div class="ad-slot"></div> <div id="games-grid"></div>
-
-            <div class="ad-slot" style="margin-top: 30px;"></div> <p class="maintain-note">Quảng cáo để duy trì web</p>
+            <div class="ad-slot"></div> 
+            <p class="maintain-note">Quảng cáo để duy trì web</p>
+            <div id="games-grid"></div>
+            <div class="ad-slot" style="margin-top: 40px;"></div>
 			<p class="maintain-note">Chúc mọi người chơi game vui vẻ</p>
         </div>
     </div>
@@ -128,11 +99,11 @@
     <div id="detail-scene" class="hidden">
         <div class="container">
             <button class="btn-back" onclick="goBack()">← QUAY LẠI</button>
-            <h1 id="det-title" style="color:var(--accent-blue); font-size: 1.3rem; margin-bottom: 15px;">Tên Game</h1>
+            <h1 id="det-title" style="color:var(--accent-blue); font-size: 1.3rem;">Tên Game</h1>
             
-            <div class="ad-slot"></div> <img id="det-img" src="" class="game-detail-img">
+            <img id="det-img" src="" class="game-detail-img">
             
-            <div class="game-ss-container">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
                 <img id="det-ss1" src="" class="game-ss-img" alt="Screenshot 1">
                 <img id="det-ss2" src="" class="game-ss-img" alt="Screenshot 2">
             </div>
@@ -140,16 +111,18 @@
             <p id="det-desc" class="game-detail-desc"></p>
 
             <div class="download-area">
-                <div class="ad-slot"></div> <div id="unlock-container">
+                <div class="ad-slot" style="margin-top: 0; margin-bottom: 15px;"></div>
+                <div id="unlock-container">
                     <button class="btn-unlock" onclick="startUnlock()">NHẤN ĐỂ MỞ KHÓA LINK TẢI</button>
-                    <p style="font-size: 0.7rem; color: #64748b;">(Quảng cáo sẽ mở ra để xác nhận mở khóa)</p>
                 </div>
-
                 <div id="download-container" class="hidden">
-                    <div class="ad-slot"></div> <a href="#" id="det-link" class="btn-download-final" target="_blank">TẢI GAME NGAY</a>
-                    <div class="ad-slot"></div> </div>
+                    <a href="#" id="det-link" class="btn-download-final" target="_blank">TẢI GAME NGAY</a>
+                </div>
             </div>
-            <div class="ad-slot" style="margin-top: 30px;"></div> </div>
+            
+            <div class="ad-slot" style="margin-top: 40px;"></div>
+            <p class="maintain-note">Quảng cáo để duy trì web</p>
+        </div>
     </div>
 
     <script src="games-data.js"></script>
@@ -158,6 +131,7 @@
         const detailScene = document.getElementById('detail-scene');
         const gamesGrid = document.getElementById('games-grid');
         const searchInput = document.getElementById('search-input');
+        let currentTimer = null; // Quản lý trình đếm ngược
 
         function renderHome(list) {
             gamesGrid.innerHTML = '';
@@ -173,6 +147,18 @@
         function showDetail(id) {
             const game = gamesData.find(g => g.id === id);
             if (!game) return;
+
+            // Dừng mọi trình đếm ngược đang chạy từ game trước
+            if (currentTimer) clearInterval(currentTimer);
+
+            // RESET TRẠNG THÁI MỞ KHÓA
+            const unlockBtn = document.querySelector('.btn-unlock');
+            unlockBtn.disabled = false;
+            unlockBtn.innerText = "NHẤN ĐỂ MỞ KHÓA LINK TẢI";
+            document.getElementById('unlock-container').classList.remove('hidden');
+            document.getElementById('download-container').classList.add('hidden');
+
+            // Cập nhật dữ liệu game
 			history.pushState({ scene: 'detail' }, '');
             document.getElementById('det-title').innerText = game.name;
             document.getElementById('det-img').src = game.image;
@@ -181,36 +167,37 @@
             document.getElementById('det-desc').innerText = game.description;
             document.getElementById('det-link').href = game.downloadLink;
             
-            document.getElementById('unlock-container').classList.remove('hidden');
-            document.getElementById('download-container').classList.add('hidden');
             mainScene.classList.add('hidden');
             detailScene.classList.remove('hidden');
             window.scrollTo(0, 0);
         }
 
         function goBack() {
+            if (currentTimer) clearInterval(currentTimer);
             detailScene.classList.add('hidden');
             mainScene.classList.remove('hidden');
             window.scrollTo(0, 0);
         }
+
         window.onpopstate = function(event) {
-        detailScene.classList.add('hidden');
-        mainScene.classList.remove('hidden');
-        window.scrollTo(0, 0);
-    };
-        // TÍCH HỢP SMARTLINK VÀO NÚT MỞ KHÓA
+            if (currentTimer) clearInterval(currentTimer);
+            detailScene.classList.add('hidden');
+            mainScene.classList.remove('hidden');
+            window.scrollTo(0, 0);
+        };
+        
         function startUnlock() {
-            // Mở Smartlink quảng cáo của bạn
             window.open('https://www.effectivegatecpm.com/sq5fzn68?key=599266e677654f9a125ceb4f0fe9c0ad', '_blank');
 
             const btn = document.querySelector('.btn-unlock');
             let time = 10;
             btn.disabled = true;
-            const timer = setInterval(() => {
+
+            currentTimer = setInterval(() => {
                 btn.innerText = `ĐANG KIỂM TRA... ${time}s`;
                 time--;
                 if (time < 0) {
-                    clearInterval(timer);
+                    clearInterval(currentTimer);
                     document.getElementById('unlock-container').classList.add('hidden');
                     document.getElementById('download-container').classList.remove('hidden');
                 }
