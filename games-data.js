@@ -100,6 +100,27 @@ const gamesData = [
 		📦 Dung Lượng(Size) ~47MB`,
         downloadLink: "https://www.mediafire.com/file/2edihyub6bhbfge/Genshin-Fight.apk/file" 
     },
+		{
+        id: 7,
+        name: " Dave The Diver - Mobile",
+        image: "images/7.jpg",
+		ss1: "all/13.webp", 
+        ss2: "all/14.jpg",
+	    description: `🌊 Dave the Diver là một hiện tượng của làng game Indie 
+		(phát triển bởi Mintrocket), kết hợp giữa phiêu lưu lặn biển và quản lý 
+		nhà hàng. Sau thành công rực rỡ trên PC và Console, phiên bản Mobile đã 
+		chính thức lộ diện và đang trở thành chủ đề cực "hot". 
+		🎮Gameplay Độc Đáo: "Ngày lặn biển - Đêm bán Sushi"
+        Lối chơi của game là một vòng lặp cực kỳ gây nghiện:
+        Ban ngày (Khám phá): Bạn vào vai Dave, lặn xuống "Hố Xanh" (Blue Hole) bí ẩn. 
+		Tại đây, bạn sẽ săn cá bằng súng móc (harpoon), đối đầu với thủy quái và thu thập tài nguyên. 
+		Bản đồ Blue Hole thay đổi mỗi lần bạn lặn (roguelike), tạo cảm giác luôn mới mẻ.
+        Ban đêm (Quản lý): Sử dụng số cá đánh bắt được để kinh doanh tại nhà hàng Bancho Sushi. 
+		Bạn sẽ lên thực đơn, phục vụ thực khách và dùng lợi nhuận để nâng cấp trang bị lặn (bình oxy, súng, đồ lặn).
+		Hãy tải về ngay để cungf trải nghiệm con game siêu phẩm này nào.
+		📦 Dung Lượng(Size) ~3,15GB`,
+        downloadLink: "https://drive.usercontent.google.com/download?id=1nx4_N3Fd4_VbdIBnwMDb0vYKUDmk8Swk&export=download&authuser=0" 
+    },
 	/*{
         id: 5,
         name: "",
